@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/FeedbackData'
+import FeedbackStats from './components/FeedbackStats'
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData)
@@ -14,10 +15,12 @@ function App() {
   }
 
   // Prop drilling handleDelete and catching it in FeedbackList, then passing it to FeedbackItem
+  // feedback is the state, when feedback changes it will change in Feedback Stats 
   return (
     <>
     <Header />
     <div className='container'>
+    <FeedbackStats feedback={feedback} />
     <FeedbackList feedback={feedback} 
       handleDelete={deleteFeedback}
     />
